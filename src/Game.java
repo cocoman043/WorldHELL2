@@ -16,9 +16,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-public class ScrollAndClipBackground extends Application {
+public class Game extends Application {
 
-    private final int tileSize = 10 ;
+    private final int tileSize = 20 ;
     private final int numTilesHoriz = 500 ;
     private final int numTilesVert = 500 ;
 
@@ -32,7 +32,7 @@ public class ScrollAndClipBackground extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Pane pane = createBackground(); // might be canvas
+        Pane pane = createBackground(); // might be canvas , probably a Pane
         Rectangle player = new Rectangle(numTilesHoriz*tileSize/2, numTilesVert*tileSize/2, 10, 10);
         player.setFill(Color.BLUE);
         pane.getChildren().add(player);
@@ -134,6 +134,8 @@ public class ScrollAndClipBackground extends Application {
 
         Canvas canvas = new Canvas(numTilesHoriz * tileSize, numTilesVert * tileSize);
         GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.setFill(Color.GRAY);
+        gc.fillRect(0,0,tileSize * numTilesHoriz, tileSize * numTilesVert);
         gc.setFill(Color.GREEN);
 
         Pane pane = new Pane(canvas);
